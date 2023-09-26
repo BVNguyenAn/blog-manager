@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import {useDispatch} from "react-redux"
 import {AddBlogAction} from "../redux/action/BlogAction"
-import { type } from '@testing-library/user-event/dist/type';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CreateBlog = () => {
   const [payload, setPayload] = useState([]);
   const [AuthorName, setAuthorName] = useState('');
@@ -12,14 +12,21 @@ const CreateBlog = () => {
   const dispatch = useDispatch();
   const HandleSubmit = (e) =>{
     e.preventDefault();
+    const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const d = new Date();
     const Payload = {
       id: new Date().getTime(),
+      date: `${month[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`,
       author: AuthorName,
       subject: Subject,
       content: Content,
+      shortContent: Content.slice(0,125) + "..."
     };
     setPayload([...payload].concat(Payload));
-    console.log([...payload].concat(Payload));
+    setAuthorName('')
+    setContent('')
+    setSubject('')
+    toast("Success");
     dispatch(AddBlogAction([...payload].concat(Payload)))
   }
   return (
@@ -42,6 +49,7 @@ const CreateBlog = () => {
         </div>
         <div className='btnCreate'>
           <button type='submit'> Create</button>
+          <ToastContainer />
           </div>
           </form>
     </div>

@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const Blog = (blog) => {
-    console.log(blog.children[1]);
+    console.log(blog.data.subject);
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const d = new Date();
     let date = `${month[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
@@ -9,13 +10,15 @@ const Blog = (blog) => {
     <div>
                 <div className='blog'>
             <div className='blog-title'>
+                <Link to={'/blog/' + blog.data.id}>
                 <span>
-                {blog.children[1].subject}
+                {blog.data.subject}
                 </span>
+                </Link>
             </div>
             <div className='blog-content'>
                 <span>
-                {blog.children[1].shortContent}
+                {blog.data.shortContent}
                 </span>
             </div>
             <div className='author-infor'>
@@ -25,12 +28,12 @@ const Blog = (blog) => {
                 <div className='author-name-date'>
                 <div className='author-name'>
                     <p>
-                        {blog.children[1].author}
+                        {blog.data.author}
                     </p>
                 </div>
                 <div className='date'>
                     <p>
-                        {date}
+                        {blog.data.date}
                     </p>
                 </div>
                 </div>
