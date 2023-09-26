@@ -5,7 +5,6 @@ import {AddBlogAction} from "../redux/action/BlogAction"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const CreateBlog = () => {
-  const [payload, setPayload] = useState([]);
   const [AuthorName, setAuthorName] = useState('');
   const [Subject, setSubject] = useState('');
   const [Content, setContent] = useState('');
@@ -14,7 +13,7 @@ const CreateBlog = () => {
     e.preventDefault();
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const d = new Date();
-    const Payload = {
+    const NewBlog = {
       id: new Date().getTime(),
       date: `${month[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`,
       author: AuthorName,
@@ -22,12 +21,11 @@ const CreateBlog = () => {
       content: Content,
       shortContent: Content.slice(0,125) + "..."
     };
-    setPayload([...payload].concat(Payload));
     setAuthorName('')
     setContent('')
     setSubject('')
     toast("Success");
-    dispatch(AddBlogAction([...payload].concat(Payload)))
+    dispatch(AddBlogAction(NewBlog))
   }
   return (
     <div className='ContainBlog'>

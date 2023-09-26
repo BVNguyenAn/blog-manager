@@ -1,11 +1,17 @@
 import React from 'react'
 import banner from '../banner.png'
-import Blog from "../components/blog";
-import store from '../redux/store';
+import SingleBlog from "../components/blog";
 
-const MainApp = () => {
-    const blog = store.getState().blogs
-    console.log(store.getState().blogs);
+const MainApp = () => {    
+    function checkBlog() {
+        if(localStorage.getItem('Blogs') === null){
+            return []
+        }else {
+            return JSON.parse(localStorage.getItem('Blogs')).blogs
+        }
+        
+    }
+    const ListBlog = checkBlog();
   return (
     <div className='container'>
         <img src={banner} className='banner' alt='banner'></img>
@@ -15,9 +21,9 @@ const MainApp = () => {
         </div>
         <div className='contain-blog'>
             {
-                blog.map((blog, index) => {
+                ListBlog.map((blog, index) => {
                     return(
-                        <Blog data={blog} key={index}/>
+                        <SingleBlog data={blog} key={index}/>
                     )
                 })
                 

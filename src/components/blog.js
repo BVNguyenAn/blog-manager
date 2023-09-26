@@ -1,11 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-const Blog = (blog) => {
-    console.log(blog.data.subject);
-    const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const d = new Date();
-    let date = `${month[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
+const SingleBlog = (blog) => {
+    console.log(blog);
   return (
     <div>
                 <div className='blog'>
@@ -43,4 +40,4 @@ const Blog = (blog) => {
   )
 }
 
-export default Blog
+export default SingleBlog
