@@ -2,8 +2,10 @@ import React from 'react'
 import { useState } from 'react';
 import {useDispatch} from "react-redux"
 import {AddBlogAction} from "../redux/action/BlogAction"
+import { type } from '@testing-library/user-event/dist/type';
 
 const CreateBlog = () => {
+  const [payload, setPayload] = useState([]);
   const [AuthorName, setAuthorName] = useState('');
   const [Subject, setSubject] = useState('');
   const [Content, setContent] = useState('');
@@ -16,8 +18,9 @@ const CreateBlog = () => {
       subject: Subject,
       content: Content,
     };
-    console.log(Payload.content.length);
-    dispatch(AddBlogAction(Payload))
+    setPayload([...payload].concat(Payload));
+    console.log([...payload].concat(Payload));
+    dispatch(AddBlogAction([...payload].concat(Payload)))
   }
   return (
     <div className='ContainBlog'>
