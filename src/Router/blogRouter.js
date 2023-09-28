@@ -1,16 +1,20 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
+import store from '../redux/store';
 
 const BlogRouter = () => {
     function checkBlog() {
-        if(localStorage.getItem('Blogs') === null){
-            return []
-        }else {
-            return JSON.parse(localStorage.getItem('Blogs')).blogs
+        if(store.getState().blogs.blogs === undefined){
+            console.log(1);
+            return store.getState().blogs
+        }else{
+            console.log(2);
+            console.log(store.getState().blogs.blogs);
+            return store.getState().blogs.blogs
         }
-        
     }
     let { blogId } = useParams();
+    console.log(checkBlog());
     const thisBlog = checkBlog().find(i => i.id == blogId)
   return (
     <div className='DetailBlog'>
@@ -27,7 +31,7 @@ const BlogRouter = () => {
                     <p className='date Spec'>  {thisBlog.date}</p>
                 </div>
                 <div className='Content'>
-                    <span >{thisBlog.Content}</span>
+                    <span >{thisBlog.content}</span>
                 </div>
             </div>
         </div>

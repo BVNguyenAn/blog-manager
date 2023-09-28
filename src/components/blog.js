@@ -1,17 +1,19 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-
+import SettingButton from './SettingButton'
 const SingleBlog = (blog) => {
-    console.log(blog);
   return (
     <div>
                 <div className='blog'>
             <div className='blog-title'>
-                <Link to={'/blog/' + blog.data.id}>
-                <span>
-                {blog.data.subject}
-                </span>
-                </Link>
+                <div className='MainTitle'>
+                    <Link to={'/blog/' + blog.data.id}>
+                    <span>
+                    {blog.data.subject}
+                    </span>
+                    </Link>
+                </div>
+                <SettingButton data={blog.data.id}/>
             </div>
             <div className='blog-content'>
                 <span>

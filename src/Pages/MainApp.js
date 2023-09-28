@@ -1,13 +1,16 @@
 import React from 'react'
 import banner from '../banner.png'
 import SingleBlog from "../components/blog";
+import store from '../redux/store';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
-const MainApp = () => {    
+const MainApp = () => {   
+    const Blog = useSelector(state => state.blogs)
     function checkBlog() {
-        if(localStorage.getItem('Blogs') === null){
-            return []
+        if( store.getState().blogs.blogs !== undefined){
+            return store.getState().blogs.blogs
         }else {
-            return JSON.parse(localStorage.getItem('Blogs')).blogs
+            return Blog
         }
         
     }
