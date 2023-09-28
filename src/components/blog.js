@@ -7,7 +7,7 @@ const SingleBlog = (blog) => {
                 <div className='blog'>
             <div className='blog-title'>
                 <div className='MainTitle'>
-                    <Link to={'/blog/' + blog.data.id}>
+                    <Link to={'/blog-manager/blog/' + blog.data.id}>
                     <span>
                     {blog.data.subject}
                     </span>

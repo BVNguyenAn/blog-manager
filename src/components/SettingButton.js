@@ -21,7 +21,7 @@ const SettingButton = (id) => {
       </div>
       <ul className='hidden tabsSetting' id={id.data}>
         <li className='tabSetting tabDelete'><DeleteButton data={id}/></li>
-        <li className='tabSetting tabEdit'><Link to={'/edit/' + id.data }>Edit</Link></li>
+        <li className='tabSetting tabEdit'><Link to={'/blog-manager/edit/' + id.data }>Edit</Link></li>
       </ul>
    </div>
   )
