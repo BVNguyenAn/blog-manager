@@ -5,13 +5,22 @@ import { useState } from 'react';
 import {useDispatch} from "react-redux"
 import { useParams } from 'react-router-dom';
 import { EditBlogAction } from '../redux/action/BlogAction';
+import store from '../redux/store';
 
-const EditBlogRouter = () => {        
-    const [AuthorName, setAuthorName] = useState('');
-    const [Subject, setSubject] = useState('');
-    const [Content, setContent] = useState('');
+const EditBlogRouter = () => {   
+      let { blogId } = useParams();
+  function checkBlog() {
+    if(store.getState().blogs.blogs === undefined){
+        return store.getState().blogs
+    }else{
+        return store.getState().blogs.blogs
+    }
+}     
+const oldBlog = [...checkBlog()].find(i => i.id == blogId)
+    const [AuthorName, setAuthorName] = useState(oldBlog.author);
+    const [Subject, setSubject] = useState(oldBlog.subject);
+    const [Content, setContent] = useState(oldBlog.content);
     const dispatch = useDispatch();
-    let { blogId } = useParams();
 
     const HandleSubmit = (e) =>{
         e.preventDefault();
