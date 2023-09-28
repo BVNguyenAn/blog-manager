@@ -11,10 +11,10 @@ function App() {
     <div className="App">
       <Homescreen/>
       <Routes>
-        <Route path="/" element={<MainApp/>}/>
-        <Route path="blog/:blogId" element={<BlogRouter />} />
-        <Route path="edit/:blogId" element={<EditBlogRouter />} />
-        <Route path="/create" element={<CreateBlog/>}/>
+        <Route path="/blog-manager/" element={<MainApp/>}/>
+        <Route path="/blog-manager/blog/:blogId" element={<BlogRouter />} />
+        <Route path="/blog-manager/edit/:blogId" element={<EditBlogRouter />} />
+        <Route path="/blog-manager/create" element={<CreateBlog/>}/>
       </Routes>
     </div>
   );
