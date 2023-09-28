@@ -30,7 +30,7 @@ const EditBlogRouter = () => {
   return (
     <div className='ContainBlog'>
     <div className='about create-about'>
-        <span>Edit Blog {blogId}</span>
+        <span>Edit Blog</span>
     </div>
     <form onSubmit={HandleSubmit}>
         <div className='containerinput'>
@@ -46,7 +46,7 @@ const EditBlogRouter = () => {
             <textarea placeholder='Content' required={true} value={Content} onChange={(e) => setContent(e.target.value)}/>
         </div>
         <div className='btnCreate'>
-          <button type='submit'> Create</button>
+          <button type='submit'> Edit</button>
           <ToastContainer />
           </div>
           </form>
