@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Pages/Header'
+import Header from '../components/Header'
 
 const Homescreen = () => {
   return (

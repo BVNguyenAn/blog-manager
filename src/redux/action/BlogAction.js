@@ -8,13 +8,7 @@ export const AddBlogAction = (blog) => (dispatch, getState) =>{
     }
             dispatch({
                 type: 'ADD_BLOG',
-                payload:[{ 
-                    author: blog.author ,
-                    id : blog.id, 
-                    date: blog.date,
-                    subject: blog.subject,
-                    shortContent: blog.shortContent, 
-                    content: blog.content}, ...checkBlog() ]
+                payload:[blog, ...checkBlog() ]
             })
             localStorage.setItem('Blogs', JSON.stringify(getState()))
 };
@@ -38,11 +32,8 @@ export const DeleteBlogAction = (blogId) => (dispatch, getState) =>{
 export const EditBlogAction = (blogId, newBlog) => (dispatch, getState) =>{
     function checkBlog() {
         if(getState().blogs.blogs === undefined){
-            console.log(1);
             return getState().blogs
         }else{
-            console.log(2);
-            console.log(getState().blogs.blogs);
             return getState().blogs.blogs
         }
     }

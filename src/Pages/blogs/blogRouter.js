@@ -1,21 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import store from '../redux/store';
+import store from '../../redux/store';
 
 const BlogRouter = () => {
-    function checkBlog() {
-        if(store.getState().blogs.blogs === undefined){
-            console.log(1);
-            return store.getState().blogs
-        }else{
-            console.log(2);
-            console.log(store.getState().blogs.blogs);
-            return store.getState().blogs.blogs
-        }
-    }
+    const [thisBlog, setThisBlog] = useState([]);
     let { blogId } = useParams();
-    console.log(checkBlog());
-    const thisBlog = checkBlog().find(i => i.id == blogId)
+    useEffect(() => {
+        function checkBlog() {
+            if(store.getState().blogs.blogs === undefined){
+                return store.getState().blogs
+            }else{
+                return store.getState().blogs.blogs
+            }
+        }
+        const thisBlog = checkBlog().find(i => i.id == blogId)
+        setThisBlog(thisBlog)
+    })
+    console.log(thisBlog);
   return (
     <div className='DetailBlog'>
         <div className='containDetail'>

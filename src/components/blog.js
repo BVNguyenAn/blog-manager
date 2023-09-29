@@ -2,22 +2,30 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import SettingButton from './SettingButton'
 const SingleBlog = (blog) => {
+    const checkBlog = () => {
+        if(blog.data.subject === undefined) {
+            return blog.data.blog
+        }else {
+            return blog.data
+        }
+    }
+    const thisBlog = checkBlog();
   return (
     <div>
                 <div className='blog'>
             <div className='blog-title'>
                 <div className='MainTitle'>
-                    <Link to={'/blog-manager/blog/' + blog.data.id}>
+                    <Link to={'/blog-manager/blog/' + thisBlog.id}>
                     <span>
-                    {blog.data.subject}
+                    {thisBlog.subject}
                     </span>
                     </Link>
                 </div>
-                <SettingButton data={blog.data.id}/>
+                <SettingButton data={thisBlog.id}/>
             </div>
             <div className='blog-content'>
                 <span>
-                {blog.data.shortContent}
+                {thisBlog.shortContent}
                 </span>
             </div>
             <div className='author-infor'>
@@ -27,12 +35,12 @@ const SingleBlog = (blog) => {
                 <div className='author-name-date'>
                 <div className='author-name'>
                     <p>
-                        {blog.data.author}
+                        {thisBlog.author}
                     </p>
                 </div>
                 <div className='date'>
                     <p>
-                        {blog.data.date}
+                        {thisBlog.date}
                     </p>
                 </div>
                 </div>

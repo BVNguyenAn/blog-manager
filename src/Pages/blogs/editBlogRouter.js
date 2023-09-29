@@ -4,8 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import {useDispatch} from "react-redux"
 import { useParams } from 'react-router-dom';
-import { EditBlogAction } from '../redux/action/BlogAction';
-import store from '../redux/store';
+import { EditBlogAction } from '../../redux/action/BlogAction';
+import store from '../../redux/store';
 
 const EditBlogRouter = () => {   
       let { blogId } = useParams();

@@ -1,9 +1,9 @@
 import { Routes, Route, } from "react-router-dom";
 import './App.css';
-import BlogRouter from './Router/blogRouter';
-import EditBlogRouter from "./Router/editBlogRouter";
+import BlogRouter from './Pages/blogs/blogRouter';
+import EditBlogRouter from "./Pages/blogs/editBlogRouter";
 import  Homescreen from "./Screen/Homescreen";
-import CreateBlog from './Pages/CreateBlog'
+import CreateBlog from './Pages/blogs/CreateBlog'
 import MainApp from "./Pages/MainApp"
 
 function App() {
